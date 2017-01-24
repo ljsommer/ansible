@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+  remote_user: ec2-user
+  roles:
+    - { role: docker, tags: ["docker"] }
+
+- hosts: ghost
+  remote_user: ec2-user
+  roles:
+    - { role: ghost, tags: ["ghost"] }

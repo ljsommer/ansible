@@ -1,0 +1,6 @@
+---
+- name: Include configuration file mount
+  include: configuration_mount.yml
+
+- name: Deploy Docker container
+  include: docker.yml

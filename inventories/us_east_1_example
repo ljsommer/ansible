@@ -1,0 +1,13 @@
+[ghost:children]
+blogname1
+blogname2
+blogname3
+
+[blogname1]
+bloghost1
+
+[blogname2]
+bloghost2
+
+[blogname3]
+bloghost3
