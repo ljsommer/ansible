@@ -1,0 +1,13 @@
+---
+- name: Create destination directory
+  file:
+    path: /opt/ghost
+    state: directory
+
+- name: Deploy configuration file for ghost
+  template:
+    src: config.js.j2
+    dest: /opt/ghost/config.js
+    owner: root
+    group: root
+    mode: 0644

@@ -1,0 +1,14 @@
+---
+- name: Install yum utils
+  yum:
+    name: yum-utils
+    state: present
+    update_cache: yes
+
+- name: Update all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: Set up automatic security updates
+  include: yum_security.yml

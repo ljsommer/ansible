@@ -1,0 +1,14 @@
+---
+- name: Launch Ghost application container
+  docker:
+    name: ghost
+    image: "{{ ghost_image }}"
+    ports: "{{ ghost_port }}:{{ ghost_port }}"
+    restart_policy: always
+    volumes_from: ghost-data
+    env:
+      GHOST_URL: "{{ domain_name }}"
+      NODE_ENV: production
+      VIRTUAL_HOST: "{{ domain_name }}"
+      LETSENCRYPT_HOST: "{{ domain_name }}"
+      LETSENCRYPT_EMAIL:  "{{ letsencrypt_email }}"

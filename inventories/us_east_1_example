@@ -1,13 +1,15 @@
 [ghost:children]
-blogname1
-blogname2
-blogname3
+blog_name
 
-[blogname1]
-bloghost1
+[ghost:vars]
+ansible_user=ec2-user
 
-[blogname2]
-bloghost2
+[blog_name]
+blogname.com
 
-[blogname3]
-bloghost3
+[blog_name:vars]
+ansible_ssh_private_key_file=~/.ssh/blogname.pem
+domain_name=blogname.com
+letsencrypt_email=user@whatever.com
+mailgun_smtp_username=(obtained via the mailgun 'domains' page)
+mailgun_smtp_password=(obtained via the mailgun 'domains' page)

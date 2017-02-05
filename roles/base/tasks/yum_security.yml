@@ -1,0 +1,21 @@
+---
+- name: Install yum-cron
+  become: yes
+  yum:
+    name: yum-cron
+    state: present
+
+- name: Copy the configuration file
+  become: yes
+  template:
+    src: etc/yum/yum-cron.conf.j2
+    dest: /etc/yum/yum-cron.conf
+  notify:
+    - restart yum-cron
+
+- name: Start yum-cron
+  become: yes
+  service:
+    name: yum-cron
+    state: running
+    enabled: yes

@@ -1,6 +1,16 @@
 ---
-- name: Include configuration file mount
-  include: configuration_mount.yml
+- name: Pull image for Ghost
+  command: docker pull "{{ ghost_image }}"
 
-- name: Deploy Docker container
-  include: docker.yml
+- name: Include configuration task file
+  include: configuration.yml
+
+- name: Include data volume task file
+  include: data.yml
+
+- name: Include application task file
+  include: application.yml
+
+- name: Include backup task file
+  include: backup.yml
+

@@ -1,11 +1,18 @@
 ---
 - hosts: all
-  vars:
-  remote_user: ec2-user
+  become: yes
+
   roles:
-    - { role: docker, tags: ["docker"] }
+    - { role: base,   tags: ['base'  ] }
+    - { role: docker, tags: ['docker'] }
 
 - hosts: ghost
-  remote_user: ec2-user
+  become: yes
+
+  vars:
+    docker_gen_container_name: docker-gen-nginx-proxy
+
   roles:
-    - { role: ghost, tags: ["ghost"] }
+    - { role: nginx_docker_gen, tags: ['nxinx_docker_gen'] }
+    - { role: ghost,            tags: ['ghost'           ] }
+    - { role: lets_encrypt,     tags: ['lets_encrypt'    ] }

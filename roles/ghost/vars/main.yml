@@ -1,1 +1,4 @@
 ---
+ghost_backup_image: bennetimo/ghost-backup
+ghost_image: ghost
+ghost_port: 2368

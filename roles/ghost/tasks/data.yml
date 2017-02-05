@@ -1,0 +1,9 @@
+---
+- name: Launch Ghost data volume container
+  docker:
+    name: ghost-data
+    image: "{{ ghost_image }}"
+    volumes:
+      - /var/lib/ghost
+      - /opt/ghost/config.js:/var/lib/ghost/config.js
+    state: started

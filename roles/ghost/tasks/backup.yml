@@ -1,0 +1,14 @@
+---
+- name: Download docker image Ghost backup
+  command: docker pull "{{ ghost_backup_image }}"
+
+- name: Launch backup container
+  docker:
+    name: ghost-backup
+    image: "{{ ghost_backup_image }}"
+    volumes:
+      - /backup
+    volumes_from:
+      - ghost-data
+    restart_policy: always
+    state: running
