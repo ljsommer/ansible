@@ -10,7 +10,11 @@
   become: yes
 
   vars:
+    # Set environment to staging when testing certs to avoid
+    # hitting the Lets Encrypt rate limits.
+    # Set environment to production for use.
     docker_gen_container_name: docker-gen-nginx-proxy
+    lets_encrypt_environment: staging
 
   roles:
     - { role: nginx_docker_gen, tags: ['nxinx_docker_gen'] }
