@@ -1,0 +1,23 @@
+---
+- name: Install supervisor
+  pip:
+    name: supervisor
+
+- name: Create directory for supervisor configuration file
+  file:
+    path: /opt/supervisor
+    state: directory
+
+- name: Deploy supervisor configuration file
+  template:
+    src: supervisor.conf.j2
+    dest: "{{ supervisor_config_path }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure supervisorctl to ensure Dockers remain in running state
+  supervisorctl:
+    config: "{{ supervisor_config_path }}"
+    name: "{{ supervisorctl_program_group }}"
+    state: started
