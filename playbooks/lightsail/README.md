@@ -16,7 +16,7 @@ This list is raw for now, more details to come.
 * Ansible 2.2
 * Domain name set up with all appropriate records
 * Mailgun account setup properly (MX records, etc)
-* CentOS based Amazon Linux instance (Ubuntu support coming in the future)
+* CentOS based Amazon Lightsail instance (Ubuntu support coming in the future)
   * While there, open port 443
 
 ### Usage
