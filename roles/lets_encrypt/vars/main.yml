@@ -1,2 +1,3 @@
 ---
+lets_encrypt_container_name: lets_encrypt
 lets_encrypt_image: jrcs/letsencrypt-nginx-proxy-companion

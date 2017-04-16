@@ -1,6 +1,7 @@
 ---
 - name: Pull image for Ghost
-  command: docker pull "{{ ghost_image }}"
+  docker_image:
+    name: "{{ ghost_image }}"
 
 - name: Include configuration task file
   include: configuration.yml

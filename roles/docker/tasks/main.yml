@@ -21,3 +21,9 @@
   service:
     name: docker
     state: running
+
+- name: Grant access to ec2-user
+  user:
+    append: yes
+    groups: docker
+    name: ec2-user

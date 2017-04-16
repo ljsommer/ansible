@@ -1,0 +1,34 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    docker_network_name: ghost
+  
+  pre_tasks:
+    - name: Create Docker network
+      docker_network:
+        name: "{{ docker_network_name }}"
+      tags: 
+        - network
+
+  roles:
+    - { role: base,    tags: ['base'   ] }
+    - { role: docker,  tags: ['docker' ] }
+
+- hosts: ghost
+  become: yes
+
+  vars:
+    # Set environment to staging when testing certs to avoid
+    # hitting the Lets Encrypt rate limits.
+    # Set environment to production for use.
+
+    docker_gen_container_name: nginx-proxy
+    docker_network_name: ghost
+    lets_encrypt_environment: staging
+
+  roles:
+    - { role: nginx_proxy,  tags: ['nginx_proxy' ] }
+    - { role: lets_encrypt, tags: ['lets_encrypt'] }
+    - { role: ghost,        tags: ['ghost'       ] }
+

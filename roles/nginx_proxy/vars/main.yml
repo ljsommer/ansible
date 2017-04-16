@@ -1,0 +1,3 @@
+---
+nginx_proxy_container_name: "nginx-proxy"
+nginx_proxy_image: "jwilder/nginx-proxy"
